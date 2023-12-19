@@ -1,14 +1,25 @@
-export default function Landing() {
+import {useNavigate} from "react-router-dom";
+
+function Landing() {
     return (
         <main>
             <Header/>
-            <Body/> 
+            <Body/>
             <Footer/>
         </main>
     );
 }
 
 function Header() {
+    const navigate = useNavigate();
+    function navigateRegister() {
+        navigate("/register");
+    }
+
+    function navigateLogin() {
+        navigate("/logIn")
+    }
+
     return (
         <header>
             <div>
@@ -16,8 +27,8 @@ function Header() {
                 <span>MyCarLocationApp</span>
             </div>
             <div>
-                <button>Register</button>
-                <button>Login</button>
+                <button onClick={navigateRegister}>Register</button>
+                <button onClick={navigateLogin}>Login</button>
             </div>
         </header>
     );
@@ -56,3 +67,5 @@ function Footer() {
       <span id="footer">&copy;MyCarLocationApp</span>
     );
 }
+
+export default Landing;
